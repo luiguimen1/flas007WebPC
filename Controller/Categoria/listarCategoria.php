@@ -3,23 +3,27 @@ header('Access-Control-Allow-Origin: *');
 require '../../BD/datos.php';
 require '../../BD/MySQLi.php';
 $json = file_get_contents("php://input");
+$json = json_decode($json);
 $bd = new ConectarBD();
 $conn = $bd->getMysqli();
-
-$sql = "select * from categoria order by nombre;";
-$stmp= $conn->prepare($sql);
+if ($json->acesso == true) {
+    $sql = "select id,concat(nombre,' #P ',(select count(*) from producto where fkCat =c.id )) nombre, descripcion, foto from categoria c order by nombre;";
+} else {
+    $sql = "select id,concat(nombre,' #P ',(select count(*) from producto where fkCat =c.id )) nombre, descripcion, foto from categoria c where (select count(*) from producto where fkCat =c.id ) >=1 order by nombre;";
+}
+$stmp = $conn->prepare($sql);
 $stmp->execute();
 
-$stmp->bind_result($id,$nombre,$descripcion,$foto);
+$stmp->bind_result($id, $nombre, $descripcion, $foto);
 
-$res=array();
-while($stmp->fetch()){
+$res = array();
+while ($stmp->fetch()) {
     $piso = array();
     $piso["id"] = $id;
     $piso["nombre"] = $nombre;
     $piso["descripcion"] = $descripcion;
     $piso["foto"] = $foto;
-    $res[]=$piso;
+    $res[] = $piso;
 }
 
 $stmp->close();
