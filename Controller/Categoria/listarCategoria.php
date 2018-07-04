@@ -7,9 +7,9 @@ $json = json_decode($json);
 $bd = new ConectarBD();
 $conn = $bd->getMysqli();
 if ($json->acesso == true) {
-    $sql = "select id,concat(nombre,' #P ',(select count(*) from producto where fkCat =c.id )) nombre, descripcion, foto from categoria c order by nombre;";
+    $sql = "select id,concat(nombre,' #P ',(select count(*) from fl07_producto where fkCat =c.id )) nombre, descripcion, foto from fl07_categoria c order by nombre;";
 } else {
-    $sql = "select id,concat(nombre,' #P ',(select count(*) from producto where fkCat =c.id )) nombre, descripcion, foto from categoria c where (select count(*) from producto where fkCat =c.id ) >=1 order by nombre;";
+    $sql = "select id,concat(nombre,' #P ',(select count(*) from fl07_producto where fkCat =c.id )) nombre, descripcion, foto from fl07_categoria c where (select count(*) from fl07_producto where fkCat =c.id ) >=1 order by nombre;";
 }
 $stmp = $conn->prepare($sql);
 $stmp->execute();

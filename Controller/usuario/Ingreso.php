@@ -6,7 +6,7 @@ $json = file_get_contents("php://input");
 $json = json_decode($json);
 $BD = new ConectarBD();
 $conn = $BD->getMysqli();
-$sql = "select * from user where cc = ? and clave like binary sha1(?) limit 1;";
+$sql = "select * from fl07_user where cc = ? and clave like binary sha1(?) limit 1;";
 $smtp = $conn->prepare($sql);
 $smtp->bind_param("ss", $json->usuario, $json->clave);
 $smtp->execute();

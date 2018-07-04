@@ -7,7 +7,7 @@ $json = json_decode($json);
 $bd = new ConectarBD();
 $conn = $bd->getMysqli();
 
-$sql = "select * from producto where fkCat = ? order by nombre;";
+$sql = "select * from fl07_producto where fkCat = ? order by nombre;";
 $stmp= $conn->prepare($sql);
 $stmp->bind_param("i",$json->id);
 $stmp->execute();

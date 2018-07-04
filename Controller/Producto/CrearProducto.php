@@ -8,9 +8,7 @@ $bd = new ConectarBD();
 $conn = $bd->getMysqli();
 
 
-$sql = "insert into producto(nombre,descripcion,valor,cant,fkCat) values(?,?,?,?,?);";
-
-
+$sql = "insert into fl07_producto(nombre,descripcion,valor,cant,fkCat) values(?,?,?,?,?);";
 
 $stmp = $conn->prepare($sql);
 $stmp->bind_param("ssdii",$json->nombre,$json->descripcion,$json->valor,$json->cant,$json->fkCat);

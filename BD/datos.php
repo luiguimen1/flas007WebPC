@@ -1,9 +1,13 @@
 <?php
 class Datos {
+  //  private $hostname = 'localhost';
+  //  private $usuario = 'root';
+  //  private $clave = '';
+  //  private $db = 'flas07';
     private $hostname = 'localhost';
-    private $usuario = 'root';
-    private $clave = '';
-    private $db = 'flas07';
+    private $usuario = 'mirayapr_UserJca';
+    private $clave = '-H60(f8R(2aa';
+    private $db = 'mirayapr_Jcali';
     
     public function Datos() {
         

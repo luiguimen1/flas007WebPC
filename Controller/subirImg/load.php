@@ -13,11 +13,11 @@ $res["success"] = "ok";
 switch ($elemento->type) {
     case 1:
         $ruta = "../../imgCat/";
-        $tabla = "categoria";
+        $tabla = "fl07_categoria";
         break;
     case 2:
         $ruta = "../../imgPro/";
-        $tabla = "producto";
+        $tabla = "fl07_producto";
         break;
     default :
         $res["success"] = "no";
