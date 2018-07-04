@@ -12,7 +12,6 @@ $stmp= $conn->prepare($sql);
 $stmp->bind_param("i",$json->id);
 $stmp->execute();
 $stmp->bind_result($id,$nombre,$descripcion,$valor,$cant,$fkCat,$foto);
-
 $res=array();
 while($stmp->fetch()){
     $piso = array();

@@ -35,8 +35,7 @@ if ($res["success"] != "no") {
     $smtp->bind_param("si", $elemento->nombre, $elemento->id);
 
     if ($smtp->execute()) {
-        move_uploaded_file($_FILES["ionicfile"]["tmp_name"], $ruta . $elemento->nombre);
-        
+        move_uploaded_file($_FILES["ionicfile"]["tmp_name"], $ruta . $elemento->nombre); 
      //   $tmp = explode("/",$elemento->old);
      //   $elemento->old = $tmp[sizeof($tmp)-1];
      //   unlink($ruta . $elemento->old);
